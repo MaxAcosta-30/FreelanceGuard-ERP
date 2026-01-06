@@ -1,0 +1,61 @@
+version: '3.9'
+
+services:
+  # 1. Base de Datos (SQL Server 2022)
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: fg_sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=TuPasswordSuperSeguro123! # En prod usar .env
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+    networks:
+      - freelance-net
+    restart: unless-stopped
+
+  # 2. Caché de Estado (Redis)
+  # Usamos Alpine por ser ligero. Redis guardará si la licencia es válida o no.
+  redis:
+    image: redis:alpine
+    container_name: fg_redis
+    ports:
+      - "6380:6379"
+    networks:
+      - freelance-net
+    restart: always
+
+  # 3. Backend API (.NET 10)
+  # Nota: Este servicio fallará al iniciar ahora porque no hemos creado el Dockerfile aún.
+  api:
+    build:
+      context: ./src/FreelanceGuard.Api
+      dockerfile: Dockerfile
+    container_name: fg_api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      # Conexión a SQL Server (usamos el nombre del servicio 'sqlserver')
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=FreelanceGuardDB;User Id=sa;Password=TuPasswordSuperSeguro123!;TrustServerCertificate=True;
+      # Conexión a Redis (usamos el nombre del servicio 'redis')
+      - ConnectionStrings__Redis=redis:6379
+      # LA VARIABLE CLAVE: Tu URL del Gist (Pega aquí la URL Raw del Paso 1)
+      - LICENSE_CHECK_URL=https://gist.githubusercontent.com/MaxAcosta-30/0cfd8ee6599f4ef381824e5ea4c5278e/raw/license-config.json
+      # Frecuencia de chequeo en minutos (Configurable)
+      - LICENSE_CHECK_INTERVAL_MIN=10
+    ports:
+      - "8080:8080" # Puerto estándar para .NET en contenedores modernos
+    depends_on:
+      - sqlserver
+      - redis
+    networks:
+      - freelance-net
+    restart: on-failure
+
+volumes:
+  sql_data:
+
+networks:
+  freelance-net:
+    driver: bridge
