@@ -237,5 +237,5 @@ Este proyecto es de código propietario. Todos los derechos reservados.
 
 ---
 
-**Importante**: es un proyecto de portafolio, no un sistema en producción. Usa un mecanismo de validación remota de licencias: Asegúrate de configurar correctamente la URL del Gist y las credenciales de base de datos antes de desplegar.
+**Importante**: es un proyecto de portafolio, no un sistema en producción. Antes de desplegarlo, configura la URL del Gist de licencias y las credenciales de la base de datos.
 
