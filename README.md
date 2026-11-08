@@ -1,11 +1,8 @@
 # FreelanceGuard ERP (Defensive REST API)
 
-![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)
-![License](https://img.shields.io/badge/License-Proprietary-red)
-![Status](https://img.shields.io/badge/Status-Production-green)
+<p align="center"><img src="docs/portada.svg" alt="FreelanceGuard: acceso controlado por una licencia remota verificada en segundo plano" width="100%"></p>
 
-## 📋 Descripción
+## Descripción
 
 **FreelanceGuard ERP** es un sistema de gestión de empleados protegido por un mecanismo de validación remota de licencias. La API implementa un patrón **"Dead Man's Switch"** que bloquea automáticamente el acceso si no se detecta una licencia válida en un Gist de GitHub.
 
@@ -13,13 +10,13 @@ Este sistema está diseñado como una **API REST defensiva** que permite control
 
 ### Características Principales
 
-- ✅ **Validación Remota de Licencias**: Verificación periódica de licencias desde GitHub Gist
-- 🔒 **Bloqueo Automático**: Sistema de protección que bloquea el acceso si la licencia es inválida
-- ⚡ **Caché Distribuido**: Uso de Redis para optimizar las verificaciones de licencia
-- 🐳 **Containerización Completa**: Infraestructura Docker Compose lista para producción
-- 📊 **Gestión de Empleados**: API REST completa para operaciones CRUD de empleados
+- **Validación Remota de Licencias**: Verificación periódica de licencias desde GitHub Gist
+- **Bloqueo Automático**: Sistema de protección que bloquea el acceso si la licencia es inválida
+- **Caché Distribuido**: Uso de Redis para optimizar las verificaciones de licencia
+- **Containerización Completa**: Infraestructura con Docker Compose para levantar todo en local
+- **Gestión de Empleados**: API REST completa para operaciones CRUD de empleados
 
-## 🏗️ Arquitectura
+## Arquitectura
 
 ### Stack Tecnológico
 
@@ -37,7 +34,7 @@ Este sistema está diseñado como una **API REST defensiva** que permite control
 3. **EmployeeRepository**: Capa de acceso a datos usando Dapper y SQL Server
 4. **EmployeesController**: Controlador REST para operaciones de empleados
 
-## 🔄 Diagrama de Flujo
+## Diagrama de Flujo
 
 El siguiente diagrama muestra el flujo completo del sistema de validación de licencias:
 
@@ -81,7 +78,7 @@ sequenceDiagram
     end
 ```
 
-## 🚀 Instalación y Uso
+## Instalación y Uso
 
 ### Requisitos Previos
 
@@ -142,7 +139,7 @@ Las siguientes variables de entorno se configuran automáticamente en `docker-co
 - **Licencia**: `LICENSE_CHECK_URL` (requerida)
 - **Intervalo de verificación**: `LICENSE_CHECK_INTERVAL_MIN` (opcional, default: 10 minutos)
 
-## 📡 Endpoints de la API
+## Endpoints de la API
 
 ### Health Check
 ```
@@ -176,7 +173,7 @@ Content-Type: application/json
 - `400 Bad Request`: Datos inválidos
 - `402 Payment Required`: Licencia inválida o bloqueada
 
-## 🔐 Sistema de Licencias (DRM)
+## Sistema de Licencias (DRM)
 
 El sistema implementa un mecanismo de **Digital Rights Management (DRM)** que permite el control remoto del acceso a la API:
 
@@ -196,7 +193,7 @@ El sistema implementa un mecanismo de **Digital Rights Management (DRM)** que pe
 - **"BLOCKED"**: Licencia inválida o error de conexión, acceso denegado
 - **null/expired**: Si la clave expira o no existe, se trata como bloqueado
 
-## 🛠️ Desarrollo
+## Desarrollo
 
 ### Estructura del Proyecto
 
@@ -221,24 +218,24 @@ FreelanceGuard-ERP/
 - **Microsoft.Data.SqlClient**: Driver oficial de SQL Server para .NET
 - **HttpClientFactory**: Gestión de clientes HTTP con Polly para resiliencia
 
-## 📝 Notas Técnicas
+## Notas Técnicas
 
 - El sistema utiliza **file-scoped namespaces** (C# 10+)
 - Todos los componentes están documentados con comentarios XML
 - El middleware omite la validación de licencia para el endpoint `/health` para permitir monitoreo
 - La inicialización de la base de datos se realiza automáticamente al iniciar el contenedor (solo para desarrollo/demo)
 
-## 👤 Autor
+## Autor
 
 **Max Acosta**
 
 - GitHub: [@MaxAcosta-30](https://github.com/MaxAcosta-30)
 
-## 📄 Licencia
+## Licencia
 
 Este proyecto es de código propietario. Todos los derechos reservados.
 
 ---
 
-**⚠️ Importante**: Este sistema está diseñado para uso en producción con un mecanismo de validación remota de licencias. Asegúrate de configurar correctamente la URL del Gist y las credenciales de base de datos antes de desplegar.
+**Importante**: es un proyecto de portafolio, no un sistema en producción. Usa un mecanismo de validación remota de licencias: Asegúrate de configurar correctamente la URL del Gist y las credenciales de base de datos antes de desplegar.
 

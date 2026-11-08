@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="400" viewBox="0 0 1280 400" role="img" aria-label="FreelanceGuard: Acceso controlado por licencia remota">
+  <rect width="1280" height="400" fill="#0E1014"/>
+  <text x="72" y="92" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="18" fill="#F0B67F" letter-spacing="2">.NET 8  ·  DAPPER  ·  REDIS</text>
+  <text x="72" y="190" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="84" font-weight="700" fill="#EEF0F3" letter-spacing="-3">FreelanceGuard</text>
+  <text x="74" y="246" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="26" fill="#9AA1AD">Acceso controlado por licencia remota</text>
+  <text x="74" y="340" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="16" fill="#9AA1AD">Serie backend · Max Acosta</text>
+  <g transform="translate(860 60)"><rect x="0" y="40" width="150" height="70" rx="35" fill="none" stroke="#9AA1AD" stroke-width="2"/>
+  <circle cx="115" cy="75" r="26" fill="#F0B67F"/>
+  <text x="0" y="170" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="16" fill="#EEF0F3">licencia válida → acceso</text><text x="0" y="200" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="16" fill="#9AA1AD">sin licencia → 403</text>
+  <text x="0" y="250" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#9AA1AD">verificación en segundo plano</text><text x="0" y="274" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#9AA1AD">estado de la licencia en Redis</text></g>
+</svg>
